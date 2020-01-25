@@ -11,6 +11,9 @@ import {UserService} from '../../services/user.service';
 export class LoginComponent implements OnInit {
   public page_title: string;
   public user: User;
+  public status: string;
+  public token;
+  public identity;
 
   constructor(
     private _userService: UserService
@@ -23,7 +26,31 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form){
-    console.log(this.user);
+    this._userService.signup(this.user).subscribe(
+      response=>{
+        //TOKEN
+        if(response.status != 'error'){
+            this.status = 'success';
+            this.token = response;
+            //Objeto usuario identificado
+          this._userService.signup(this.user, true).subscribe(
+            response=>{
+                this.identity = response;
+                console.log(this.identity,this.token);
+            },
+            error=>{
+              this.status = 'error';
+              console.log(<any>error);
+            }
+          )
+
+        }
+      },
+      error=>{
+        this.status = 'error';
+        console.log(<any>error);
+      }
+    )
   }
 
 }
