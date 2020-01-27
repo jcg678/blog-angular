@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
             response=>{
                 this.identity = response;
 
-                localStorage.setItem('tokekn',this.token);
+                localStorage.setItem('token',this.token);
                 localStorage.setItem('identity',JSON.stringify(this.identity));
 
               this._router.navigate(['inicio']);
