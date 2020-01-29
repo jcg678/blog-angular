@@ -15,7 +15,13 @@ export class UserEditComponent implements OnInit {
   public identity;
   public token;
   public status;
-
+  public froala_options: Object = {
+    charCounterCount: true,
+    toolbarButtons: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
+    toolbarButtonsXS: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
+    toolbarButtonsSM: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
+    toolbarButtonsMD: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
+  };
   constructor(
     private _userService: UserService
   ) {
@@ -33,7 +39,7 @@ export class UserEditComponent implements OnInit {
     this._userService.update(this.token,this.user).subscribe(
       response=>{
         console.log(response);
-        if(response){
+        if(response && response.status){
 
           if(response.changes.name){
             this.user.name =  response.changes.name;
@@ -50,6 +56,7 @@ export class UserEditComponent implements OnInit {
 
 
           this.identity = this.user;
+          this.status='success';
           localStorage.setItem('identity',JSON.stringify(this.identity));
         }else{
           this.status = 'response';
