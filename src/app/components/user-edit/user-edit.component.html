@@ -30,6 +30,9 @@
     </div>
     <div class="form-group">
       <label for="image">Avatar</label>
+      <div *ngIf="identity && identity.image">
+        <img src="{{url + 'user/avatar/'+identity.image}}" class="avatar_edit">
+      </div>
       <angular-file-uploader
         [config]="afuConfig"
         [resetUpload]="resetVar"
