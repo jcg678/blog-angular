@@ -9,6 +9,17 @@
   <div class="alert alert-danger" *ngIf="status == 'error'">
     No se ha podido guardar
   </div>-->
+  <form #categoryForm="ngForm" (ngSubmit)="onSubmit(categoryForm)" class="col-md-5">
+    <div class="form-group">
+      <label for="name">Nombre</label>
+      <input type="text" name="name" class="form-control" #name="ngModel" [(ngModel)]="category.name" required="" />
+      <small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">
+        El nombre de la categoría no es valída
+      </small>
+    </div>
+  <input type="submit" value="Guardar" class="btn btn-success" [disabled]="categoryForm.invalid" >
+
+  </form>
 
   <br>
 
