@@ -10,5 +10,12 @@
             El titulo no es valido
           </small>
       </div>
+    <div class="form-group">
+      <label for="content">Contenido</label>
+      <textarea [froalaEditor]="froala_options" name="content" #content="ngModel" [(ngModel)]="post.content" required=""></textarea>
+      <small *ngIf="!content.valid && content.touched" class="invalid-feedback d-block">
+        El contenido no es valido
+      </small>
+    </div>
   </form>
 </div>
