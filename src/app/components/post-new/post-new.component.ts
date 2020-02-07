@@ -15,6 +15,8 @@ export class PostNewComponent implements OnInit {
   public identity;
   public token;
   public post:Post;
+  public categories;
+
   public froala_options: Object = {
     charCounterCount: true,
     toolbarButtons: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
@@ -36,7 +38,19 @@ export class PostNewComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getCategories();
     this.post = new Post(1,this.identity.sub, 1, '','',null,null);
   }
 
+  getCategories(){
+    this._categoryService.getCategories().subscribe(
+      response=>{
+        if(response.status="success"){
+          this.categories = response.categories;
+        }
+      },error => {
+          console.log(error);
+      }
+    )
+  }
 }
