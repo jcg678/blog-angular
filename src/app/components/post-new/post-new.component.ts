@@ -3,6 +3,7 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 import { UserService} from '../../services/user.service';
 import {CategoryService} from '../../services/category.service';
 import {Post} from '../../models/post';
+import {global} from '../../services/global';
 
 @Component({
   selector: 'app-post-new',
@@ -16,6 +17,23 @@ export class PostNewComponent implements OnInit {
   public token;
   public post:Post;
   public categories;
+
+  public afuConfig = {
+    multiple: false,
+    formatsAllowed: ".jpg,.png,.jpgeg",
+    maxSize: "2",
+    uploadAPI:  {
+      url: global.url+'post/upload',
+      headers: {
+        "Authorization" : this._userService.getToken()
+      }
+    },
+    theme: "attachPin",
+    hideProgressBar: false,
+    hideResetBtn: true,
+    hideSelectBtn: false,
+    attachPinText: 'Sube tu imagen'
+  };
 
   public froala_options: Object = {
     charCounterCount: true,
@@ -53,4 +71,11 @@ export class PostNewComponent implements OnInit {
       }
     )
   }
+
+  imageUpload(data){
+    console.log(data);
+    let image_data = JSON.parse(data.response);
+    this.post.image =image_data.image;
+  }
+
 }

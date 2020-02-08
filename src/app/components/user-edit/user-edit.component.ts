@@ -39,7 +39,7 @@ export class UserEditComponent implements OnInit {
     hideProgressBar: false,
     hideResetBtn: true,
     hideSelectBtn: false,
-    attachPinBtn: 'Sube tu avatar de usuario'
+    attachPinText: 'Sube tu avatar de usuario'
     };
 
   constructor(
