@@ -4,12 +4,13 @@ import { UserService} from '../../services/user.service';
 import {CategoryService} from '../../services/category.service';
 import {Post} from '../../models/post';
 import {global} from '../../services/global';
+import {PostService} from '../../services/post.service';
 
 @Component({
   selector: 'app-post-new',
   templateUrl: './post-new.component.html',
   styleUrls: ['./post-new.component.css'],
-  providers: [UserService, CategoryService]
+  providers: [UserService, CategoryService, PostService]
 })
 export class PostNewComponent implements OnInit {
   public page_title:string;
@@ -17,6 +18,7 @@ export class PostNewComponent implements OnInit {
   public token;
   public post:Post;
   public categories;
+  public status;
 
   public afuConfig = {
     multiple: false,
@@ -47,7 +49,8 @@ export class PostNewComponent implements OnInit {
     private _route:ActivatedRoute,
     private _router: Router,
     private _userService: UserService,
-    private _categoryService: CategoryService
+    private _categoryService: CategoryService,
+    private _postService: PostService
 
   ) {
     this.page_title="Crear una entrada";
@@ -79,6 +82,19 @@ export class PostNewComponent implements OnInit {
   }
 
   onSubmit(form){
-    console.log(this.post);
+      this._postService.create(this.token,this.post).subscribe(
+        response=>{
+          this.status = 'error';
+          if(response.status == 'success'){
+            this.post = response.post;
+            this.status = 'success';
+            this._router.navigate(['/inicio']);
+          }
+        },
+        error=>{
+          console.log(error);
+          this.status = 'error';
+        }
+      )
   }
 }
