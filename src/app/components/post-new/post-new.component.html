@@ -1,6 +1,7 @@
 <div class="col-md-12 mt-3">
   <h1>{{page_title}}</h1>
-
+  <p>Añade un nuevo articulo al blog</p>
+  <hr>
   <form class="col-md-5 mol-0 pl-0" #postNew="ngForm" (ngSubmit)="onSubmit(postNew)">
       <div class="form-group">
           <label for="title">Titulo</label>
@@ -27,5 +28,7 @@
         <label for="image">Imagen</label>
       <angular-file-uploader [config]="afuConfig" [resetUpload]="resetVar" (ApiResponse)="imageUpload($event)" ></angular-file-uploader>
     </div>
+    <input type="submit" value="Guardar" class="btn btn-success" [disabled]="postNew.invalid" />
   </form>
+  <br>
 </div>

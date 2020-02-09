@@ -78,4 +78,7 @@ export class PostNewComponent implements OnInit {
     this.post.image =image_data.image;
   }
 
+  onSubmit(form){
+    console.log(this.post);
+  }
 }
