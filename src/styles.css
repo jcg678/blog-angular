@@ -13,3 +13,7 @@
 .avatar_mask img{
   height: 50px;
 }
+
+.card-header a{
+  color:#444;
+}
