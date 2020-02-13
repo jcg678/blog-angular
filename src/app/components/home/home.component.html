@@ -19,6 +19,12 @@
           <div class="post-image w-100" *ngIf="!post.image">
             <img src="assets/images/200.png" class="w-100" />
           </div>
+          <div class="post-buttons mt-3">
+            <a [routerLink]="['/inicio']" class="btn btn-success mr-2">Leer</a>
+            <a [routerLink]="['/inicio']" class="btn btn-warning mr-2">Editar</a>
+            <a [routerLink]="['/inicio']" class="btn btn-danger">Borrar</a>
+          </div>
+
         </div>
       </article>
   </div>
