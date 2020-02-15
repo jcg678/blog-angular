@@ -10,7 +10,7 @@ import {PostService} from '../../services/post.service';
   providers: [PostService]
 })
 export class PostDetailComponent implements OnInit {
-      public post:Post;
+      public post: Post;
   constructor(
     private _postService: PostService,
     private _route: ActivatedRoute,
