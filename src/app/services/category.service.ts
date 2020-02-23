@@ -38,7 +38,7 @@ export class CategoryService {
   }
   getPosts(id):Observable<any>{
     let headers = new HttpHeaders().set('Content-type', 'application/x-www-form-urlencoded');
-    return this._http.get(this.url+'/post/category/'+id,{headers:headers});
+    return this._http.get(this.url+'post/category/'+id,{headers:headers});
   }
 
 }

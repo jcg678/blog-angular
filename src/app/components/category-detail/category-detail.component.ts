@@ -16,7 +16,7 @@ import {Observable} from 'rxjs';
 export class CategoryDetailComponent implements OnInit {
   public page_title: string;
   public category: Category;
-  public post: any;
+  public posts: any;
   public url: string;
 
   constructor(
@@ -39,6 +39,19 @@ export class CategoryDetailComponent implements OnInit {
         response => {
           if (response.status == 'success'){
             this.category = response.category;
+            this._categoryService.getPosts(id).subscribe(
+              response => {
+                if(response.status=='success'){
+                    this.posts = response.posts;
+                    //console.log(response);
+                }else{
+                  this._router.navigate(['/inicio']);
+                }
+              },error => {
+                  console.log(error);
+              }
+            );
+
           } else {
             this._router.navigate(['/inicio']);
           }

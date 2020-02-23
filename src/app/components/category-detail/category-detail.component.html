@@ -1,14 +1,16 @@
-<div class="loading" >
-  Cargando...
-</div>
+
 
 
 
 <div class="container-fluid mt-3" *ngIf="category">
   <h1>{{category.name}}</h1>
   <hr>
-  <!--
-  <div class="card-columns">
+
+  <div class="alert alert-warning" *ngIf="posts && posts.length == 0">
+      No hay entradas de esta categoria
+  </div>
+
+  <div class="card-columns" *ngIf="posts" >
     <article class="card w-100" *ngFor="let post of posts">
       <div class="card-header">
         <h3><a [routerLink]="['/entrada', post.id]">{{post.title}}</a></h3>
@@ -62,7 +64,7 @@
 
       </div>
     </article>
-  </div>-->
+  </div>
 
 </div>
 
