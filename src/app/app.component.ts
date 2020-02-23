@@ -25,7 +25,7 @@ export class AppComponent implements OnInit, DoCheck{
   }
 
   ngOnInit(){
-    console.log('webapp Cargada');
+    //console.log('webapp Cargada');
     this.getCategories();
   }
 
@@ -42,7 +42,7 @@ export class AppComponent implements OnInit, DoCheck{
       response =>{
           if(response.status== 'success'){
             this.categories = response.categories;
-            console.log(this.categories);
+            //console.log(this.categories);
           }
       },
       error => {

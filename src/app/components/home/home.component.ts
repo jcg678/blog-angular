@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
       response => {
         if (response.status === 'success') {
           this.posts = response.posts;
-          console.log(this.posts);
+          //console.log(this.posts);
         }
       },
       error => {
