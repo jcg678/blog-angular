@@ -19,7 +19,7 @@ export class CategoryDetailComponent implements OnInit {
   public category: Category;
   public posts: any;
   public url: string;
-  public indentity;
+  public identity;
   public token;
 
   constructor(
