@@ -28,7 +28,6 @@ export class IdentityGuard implements CanActivate {
 
       return false;
     }
-    return false;
   }
    /*
       this._userService.getIdentity()

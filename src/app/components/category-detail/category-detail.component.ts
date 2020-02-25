@@ -38,7 +38,8 @@ export class CategoryDetailComponent implements OnInit {
     this.getPostByCategory();
   }
 
-  getPostByCategory():Observable<any>{
+  getPostByCategory()
+  {
     this._route.params.subscribe(params => {
       let id = +params['id'];
 
