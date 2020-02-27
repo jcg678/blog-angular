@@ -19,6 +19,7 @@ export class PostEditComponent implements OnInit {
   public categories;
   public status;
   public is_edit:boolean;
+  public url;
 
   public afuConfig = {
     multiple: false,
@@ -58,6 +59,7 @@ export class PostEditComponent implements OnInit {
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
     this.is_edit=true;
+    this.url = global.url;
   }
 
   ngOnInit() {
