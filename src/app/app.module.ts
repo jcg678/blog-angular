@@ -20,6 +20,7 @@ import { PostEditComponent } from './components/post-edit/post-edit.component';
 import { CategoryDetailComponent } from './components/category-detail/category-detail.component';
 import {IdentityGuard} from './services/identity.guard';
 import {UserService} from './services/user.service';
+import { ProfileComponent } from './components/profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import {UserService} from './services/user.service';
     PostNewComponent,
     PostDetailComponent,
     PostEditComponent,
-    CategoryDetailComponent
+    CategoryDetailComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

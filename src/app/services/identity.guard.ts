@@ -6,39 +6,21 @@ import {catchError} from 'rxjs/operators';
 
 @Injectable()
 export class IdentityGuard implements CanActivate {
-  //public canActivate;
-
 
   constructor(
     private _router: Router,
     private _userService: UserService
   ) {
-
   }
 
   canActivate() {
     let identity = this._userService.getIdentity();
-
-    console.log(identity);
     if(identity){
-
       return true;
     }else{
       this._router.navigate(['/inicio']);
-
       return false;
     }
   }
-   /*
-      this._userService.getIdentity()
-        .then( (respuesta)=>{
-          return true;
-        }
-        ).catch(() => {
-      this._router.navigate(['/inicio']);
-
-       return false;
-
-    });*/
 
 }
