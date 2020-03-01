@@ -10,61 +10,11 @@
       No hay entradas de esta categoria
   </div>
 
-  <div class="card-columns" *ngIf="posts" >
-    <article class="card w-100" *ngFor="let post of posts">
-      <div class="card-header">
-        <h3><a [routerLink]="['/entrada', post.id]">{{post.title}}</a></h3>
-      </div>
-      <div class="card-body">
-        <div class="post-image w-100" *ngIf="post.image">
-          <img src="{{url +'post/image/'+post.image}}" class="w-100" />
-        </div>
-        <div class="post-image w-100" *ngIf="!post.image">
-          <img src="assets/images/200.png" class="w-100" />
-        </div>
-        <div class="post-buttons mt-3">
-          <a [routerLink]="['/entrada', post.id]" class="btn btn-success mr-2">Leer</a>
-          <span *ngIf="identity  && identity.sub == post.user_id">
-              <a [routerLink]="['/editar-entrada', post.id]" class="btn btn-warning mr-2">Editar</a>
+  <post-list [posts]="posts"
+             [identity]="identity"
+             [url]="url">
+  </post-list>
 
-
-
-              <button type="button" class="btn btn-primary" data-toggle="modal" [attr.data-target]="'#myModal'+post.id">
-                Borrar
-              </button>
-
-
-              <div class="modal" id="myModal{{post.id}}">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-
-
-                    <div class="modal-header">
-                      <h4 class="modal-title">¿Seguro que quieres borrar?</h4>
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-
-
-                    <div class="modal-body">
-                      Vas a borrar definitivamente
-                    </div>
-
-
-                    <div class="modal-footer">
-                      <a (click)="deletePost(post.id)" class="btn btn-danger" data-dismiss="modal">Borrar</a>
-                      <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-
-            </span>
-        </div>
-
-      </div>
-    </article>
-  </div>
 
 </div>
 
